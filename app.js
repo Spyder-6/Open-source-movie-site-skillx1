@@ -1,7 +1,6 @@
 /* ================= CONFIG ================= */
 const OMDB_KEY = 'dea27012';
 const API_ROOT = `https://www.omdbapi.com/?apikey=${OMDB_KEY}&`;
-
 /* ============= SLIDESHOW IMAGES ============= */
 const slideshowImages = [
   'https://i.vimeocdn.com/video/696682957-a405a56e2669d5d32e313b1b3244d6e3f465d19c1a66d24719fd005387330e52-d?f=webp',
@@ -10,9 +9,7 @@ const slideshowImages = [
   'https://i.pinimg.com/736x/0f/fa/10/0ffa1054b284e74579406e357cc610c9.jpg',
   'https://bsmedia.business-standard.com/_media/bs/img/article/2024-05/02/full/1714640016-6552.jpg',
   'https://img.etimg.com/thumb/width-1600,height-900,imgsize-82852,resizemode-75,msid-122804611/magazines/panache/saiyaara-shatters-records-with-rs-83-crore-in-its-opening-weekend-ahaan-panday-and-aneet-padda-make-history.jpg'
-  
 ];
-
 function createSlidesFromArray(){
   const container = document.getElementById('heroSlidesContainer');
   if(!container) return;
@@ -26,7 +23,6 @@ function createSlidesFromArray(){
     container.appendChild(d);
   });
 }
-
 let slideTimer = null;
 let currentSlideIndex = 0;
 function startSlideshow(){
@@ -41,7 +37,6 @@ function startSlideshow(){
     slides[currentSlideIndex].setAttribute('aria-hidden', 'false');
   }, 6500);
 }
-
 /* ============= OMDb rows & search ============= */
 const rows = {
   bollywood: ['Panchayat','Dangal','Jawan','Pathaan','Special 26','Aavesham','Kick','Saiyaara'],
@@ -51,7 +46,6 @@ const rows = {
   scifi: ['Avatar','The Martian','Gravity','Tenet','Edge of Tomorrow','Oblivion'],
   drama: ['Squid Game','Alice in Borderland','All of Us Are Dead','When the Stars Gossip','Queen of Tears','Business Proposal','Chimera']
 };
-
 async function safeFetchJson(url){
   try{
     const res = await fetch(url);
@@ -62,7 +56,6 @@ async function safeFetchJson(url){
     return null;
   }
 }
-
 async function loadRowMovies(){
   for(const key of Object.keys(rows)){
     const wrap = document.getElementById('row-' + key);
@@ -90,20 +83,16 @@ async function loadRowMovies(){
     }
   }
 }
-
 /* ---------- Search ---------- */
 function getSearchBox(){ return document.getElementById('searchBox'); }
 function getResultsSection(){ return document.getElementById('resultsSection'); }
 function getHomeSection(){ return document.getElementById('homeSection'); }
-
 async function searchMovies(){
   const sb = getSearchBox();
   const q = sb && sb.value ? sb.value.trim() : '';
   if(!q){ location.reload(); return; }
-
   if(getHomeSection()) getHomeSection().classList.add('hidden');
   if(getResultsSection()) getResultsSection().classList.remove('hidden');
-
   const data = await safeFetchJson(API_ROOT + 's=' + encodeURIComponent(q));
   const grid = document.getElementById('resultsGrid');
   if(!grid) return;
@@ -125,24 +114,20 @@ async function searchMovies(){
     grid.appendChild(col);
   }
 }
-
 /* ============ INIT ============ */
 document.addEventListener('DOMContentLoaded', () => {
   try{
     // Create + run slideshow
     createSlidesFromArray();
     startSlideshow();
-
     // Load rows
     loadRowMovies().catch(e => console.warn('loadRowMovies error', e));
-
     // Search handlers
     const sb = getSearchBox();
     const btn = document.getElementById('searchBtn');
     if(sb) sb.addEventListener('keydown', e => { if(e.key === 'Enter') searchMovies(); });
     if(btn) btn.addEventListener('click', searchMovies);
-
-    // GSAP hero intro letters
+    //hero intro letters
     try{
       const title = document.getElementById('heroTitle');
       if(title && typeof gsap !== 'undefined'){
@@ -163,11 +148,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const h = document.getElementById('heroTitle'); if(h) h.style.opacity = '1';
       }
     }catch(e){ console.warn('hero animation error', e); }
-
-    // Ensure footer fade-in triggers (CSS handles animation)
+    //footer fade-in triggers
     const footerFade = document.querySelector('.fade-in');
     if(footerFade) footerFade.classList.add('fade-in');
-
     // Mobile hero sizing helper
     (function mobileHeroHelper(){
       function setHeroHeight(){
