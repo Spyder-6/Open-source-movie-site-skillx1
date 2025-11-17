@@ -183,7 +183,7 @@ header{
 	gap:12px;
 	margin-top:20px
 }
-/* CSS scroll arrow indicator (no external image) */
+/* CSS scroll arrow indicator */
 .scroll-indicator {
 	position: absolute;
 	bottom: 20px;
@@ -249,7 +249,7 @@ header{
 		filter:blur(0px) 
 }
 }
-/* hero bottom gradient (premium fade) */
+/* hero bottom gradient fade */
 #heroArea::after{
 	content:"";
 	position:absolute;
@@ -289,12 +289,12 @@ header{
   overflow-x: auto;
   padding-bottom: 10px;
   -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin; /* Firefox */
-  scrollbar-color: rgba(255,255,255,0.12) transparent; /* thumb, track */
+  scrollbar-width: thin; 
+  scrollbar-color: rgba(255,255,255,0.12) transparent; 
 }
 
 .scroll-row::-webkit-scrollbar {
-  height: 8px;               /* thickness */
+  height: 8px;              
 }
 .scroll-row::-webkit-scrollbar-track {
   background: transparent;
@@ -389,7 +389,7 @@ header{
 	.hero-sub{
 		font-size:0.95rem
 }
-	/* Show rows on mobile but make them touch-friendly */
+	/* Show rows on mobile */
 	.scroll-row{
 		display:flex!important;
 		gap:12px;
@@ -432,7 +432,7 @@ header{
 		font-size:0.98rem
 }
 }
-/* Mobile compact hero override (make hero smaller if still too tall) */
+/* Mobile compact hero section */
 @media (max-width:640px){
 	#heroArea{
 		min-height:280px!important;
