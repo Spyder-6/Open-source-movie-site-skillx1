@@ -45,7 +45,7 @@ This project was built by the **PIXEL BITS** team as a showcase of modern web de
 * **Frontend:** `HTML 5 , CSS 3 , Java Script`
 * **Styling:** `CSS`
 * **API:** `omDB API` `TMDB API` `Gemini API` 
-* **Deployment:** Vercel
+* **Deployment:** Infinityfree web host
 
 <br />
 
