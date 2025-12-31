@@ -43,8 +43,8 @@ This project was built by the **PIXEL BITS** team as a showcase of modern web de
 ## 💻 Tech Stack
 
 * **Frontend:** `HTML 5 , CSS 3 , Java Script`
-* **Styling:** `Tailwind CSS`
-* **API:** `omDB API`
+* **Styling:** `CSS`
+* **API:** `omDB API` `TMDB API` `Gemini API` 
 * **Deployment:** Vercel
 
 <br />
